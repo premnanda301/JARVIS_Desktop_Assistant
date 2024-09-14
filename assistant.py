@@ -56,23 +56,6 @@ def takeCommand():
         return "None"
     return query
 
-def sendEmail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login('premnanda301@gmail.com', 'prem@301')
-    server.sendmail('nandaprem301@gmail.com', to, content)
-    server.close()
-
-def playMusic():
-    music_path = r'C:\Users\nanda\Downloads\song.mp3'
-    try:
-        os.startfile(music_path)
-        speak("Playing your music, sir.")
-    except Exception as e:
-        print(e)
-        speak("Sorry, I am unable to play the music.")
-
 if __name__ == "__main__":
     wishMe()
     # here we have commented while loop because if we don't the system will continue
@@ -96,16 +79,12 @@ if __name__ == "__main__":
             open_website_in_chrome("http://youtube.com")
         elif 'open google' in query:
             open_website_in_chrome("http://google.com")
-
-        elif 'play music' in query:
-            playMusic()
-
         elif 'the time' in query:
             # (%H:%M:%S) this will give the time in the specified format strtime = string time
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
         elif 'open visual studio code' in query:
-            codePath = r"C:\Users\nanda\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+            codePath = r"C:\Users\nanda\AppData\Local\Programs\Microsoft VS Code\Code.exe"  # Update this path if your Visual Studio version or installation path is different
             os.startfile(codePath)
         elif 'open visual studio' in query:
             vsPath = r"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"  # Update this path if your Visual Studio version or installation path is different
